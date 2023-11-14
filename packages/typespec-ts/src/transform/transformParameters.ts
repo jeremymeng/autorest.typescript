@@ -232,9 +232,9 @@ function transformBodyParameters(
   inputBodyType?: Type
 ): ParameterBodyMetadata | undefined {
   const bodyType =
-    (parameters.bodyType ?? parameters.bodyParameter?.type) && inputBodyType
+    (parameters.body?.type ?? parameters.body?.parameter?.type) && inputBodyType
       ? inputBodyType
-      : parameters.bodyType ?? parameters.bodyParameter?.type;
+      : parameters.body?.type ?? parameters.body?.parameter?.type;
   if (!bodyType) {
     return;
   }
@@ -287,7 +287,7 @@ function transformNormalBody(
         typeName: schema.name,
         name: "body",
         type: overrideType ?? type,
-        required: parameters?.bodyParameter?.optional === false,
+        required: parameters?.body?.parameter?.optional === false,
         description: descriptions.join("\n\n"),
         oriSchema: schema
       }
@@ -344,10 +344,10 @@ function extractDescriptionsFromBody(
   parameters: HttpOperationParameters
 ) {
   const description =
-    parameters.bodyParameter &&
+    parameters.body?.parameter &&
     getFormattedPropertyDoc(
       dpgContext.program,
-      parameters.bodyParameter,
+      parameters.body?.parameter,
       getSchemaForType(dpgContext, bodyType, [
         SchemaContext.Input,
         SchemaContext.Exception
