@@ -101,7 +101,7 @@ function getAzurePackageCjsDevDependencies({
   const testDevDependencies = {
     "@azure-tools/test-credential": "^1.1.0",
     "@azure-tools/test-recorder": "^3.0.0",
-    nyc: "^15.1.0",
+    nyc: "^17.0.0",
     mocha: "^10.0.0",
     "@types/mocha": "^10.0.0",
     "cross-env": "^7.0.2",
